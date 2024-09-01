@@ -1,0 +1,6 @@
+﻿  Pong.cpp
+F:\devprojects\Pong\code\Pong\Pong\Pong.cpp(45,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\devprojects\Pong\code\Pong\Pong\Pong.cpp(69,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Pong.vcxproj -> F:\devprojects\Pong\code\Pong\x64\Debug\Pong.exe
+  'pwsh.exe' is not recognized as an internal or external command,
+  operable program or batch file.

@@ -1,0 +1,4 @@
+﻿  Tetris.cpp
+F:\devprojects\Tetris\code\Tetris\Tetris\Tetris.cpp(127,3): error C2143: syntax error: missing ';' before 'while'
+F:\devprojects\Tetris\code\Tetris\Tetris\Tetris.cpp(167,11): error C2065: 'vLines': undeclared identifier
+F:\devprojects\Tetris\code\Tetris\Tetris\Tetris.cpp(167,43): error C2065: 'vLines': undeclared identifier
