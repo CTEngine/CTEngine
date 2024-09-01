@@ -1,13 +1,14 @@
 {
     "configurations": [
         
+        
         {
             "name": "C/C++: g++.exe build and debug active file",
             "type": "cppdbg",
             "request": "launch",
             "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
             "args": [
-                "--std=C++20",
+                "--std=C++20"
             ],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
