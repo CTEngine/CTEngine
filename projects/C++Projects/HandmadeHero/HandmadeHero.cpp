@@ -111,16 +111,12 @@ MainWindowCallback(HWND Window,
   return(Result);
 }
 
-// NEW COMPLETE (ARM&)
-
 int CALLBACK WinMain(
 	HINSTANCE Instance,
 	HINSTANCE PrevInstance,
 	LPSTR CommandLine,
 	int ShowCode)
 {
-
-    // NEW (ARM&)
     WNDCLASS WindowClass = {};
 
     // TODO (ARM&): Check if HREDRAW/VREDRAW/OWNDC still matter?
@@ -133,7 +129,7 @@ int CALLBACK WinMain(
     if(RegisterClass(&WindowClass))
     {
       HWND WindowHandle = 
-          CreateWindowEX(
+          CreateWindowEx(
               0,
               //DWORD dwExStyle,
               WindowClass.lpszClassName,
@@ -155,10 +151,10 @@ int CALLBACK WinMain(
               0,
               //HMENU hMenu,
               Instance,
-              // HINSTANCE hInstance,
+              //HINSTANCE hInstance,
               0);
               //LPVOID lpParam);
-      if(WindowHandle != NULL)
+      if(WindowHandle) //THIS CAN BE OMITTED. (!= NULL)
       {
         for(;;)
         {
@@ -166,7 +162,7 @@ int CALLBACK WinMain(
           BOOL MessageResult = GetMessage(&Message, 0, 0, 0);
           if(MessageResult > 0)
           {
-            TranslateMessage(&Message);
+            TranslateMessage(&Message); // OMIT FOR LATER USE.
             DispatchMessage(&Message);
           }
           else
@@ -191,12 +187,5 @@ int CALLBACK WinMain(
     // This is creation of the main window.
     // std::cout << "CTEngines: Handmade Hero " << std::endl;
     // MessageBoxA(0, "Handmade Hero ", "CTEngines: Handmade Hero ", MB_OK|MB_ICONINFORMATION );
-    
-    
-    // NEW (ARM&)
-
-    // NEW COMPLETE (ARM&)
-    
-    
     return 0;
 }
