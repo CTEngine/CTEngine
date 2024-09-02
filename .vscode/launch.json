@@ -2,6 +2,7 @@
     "configurations": [
         
         
+        
         {
             "name": "C/C++: g++.exe build and debug active file",
             "type": "cppdbg",
