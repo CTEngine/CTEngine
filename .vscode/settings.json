@@ -1,0 +1,27 @@
+{
+    "cSpell.words": [
+        "ACTIVATEAPP",
+        "HBRUSH",
+        "HCURSOR",
+        "HICON",
+        "HMENU",
+        "HREDRAW",
+        "HWND",
+        "LPARAM",
+        "LPCSTR",
+        "lpfn",
+        "lpsz",
+        "LPWNDCLASSA",
+        "LRESULT",
+        "nheight",
+        "NPWNDCLASSA",
+        "OWNDC",
+        "PWNDCLASSA",
+        "STATMENT",
+        "USEDEFAULT",
+        "VREDRAW",
+        "WNDCLASS",
+        "WNDCLASSA",
+        "WPARAM"
+    ]
+}
