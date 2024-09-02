@@ -31,7 +31,7 @@
 #include <iostream>
 #include <wingdi.h>
 
-/*
+/* Condensed Notes
 
 struct tagWNDCLASSA
 {
@@ -62,8 +62,6 @@ typedef struct tagWNDCLASSA
 } WNDCLASSA, *PWNDCLASSA, *NPWNDCLASSA, *LPWNDCLASSA;
 
 */
-
-// NEW (ARM&)
 
 LRESULT CALLBACK
 MainWindowCallback(HWND Window,
@@ -104,7 +102,7 @@ MainWindowCallback(HWND Window,
           int Height = Paint.rcPaint.bottom - Paint.rcPaint.top;
           static DWORD Operation = BLACKNESS;
           // PatBlt(DeviceContext, X, Y, Width, Height, WHITENESS);
-          // PatBlt(DeviceContext, X, Y, Width, Height, BLACKNESS); 
+          PatBlt(DeviceContext, X, Y, Width, Height, BLACKNESS); 
           if(Operation == WHITENESS)
           {
             Operation = BLACKNESS;
@@ -135,11 +133,11 @@ int CALLBACK WinMain(
   WNDCLASS WindowClass = {};
 
   // TODO (ARM&): Check if HREDRAW/VREDRAW/OWNDC still matter?
-  // WindowClass.style = CS_OWNDC | CS_HREDRAW | CS_VREDRAW; // FLAGS Needed to Draw/Control Window.
+  WindowClass.style = CS_OWNDC | CS_HREDRAW | CS_VREDRAW; // FLAGS Needed to Draw/Control Window.
   WindowClass.lpfnWndProc = MainWindowCallback;           // Handles Windows Procedures.
   WindowClass.hInstance = Instance;
   WindowClass.lpszClassName = "HandmadeHeroWindowClass";
-  // WindowClass.hIcon;
+  WindowClass.hIcon;
 
   if(RegisterClassA(&WindowClass))
   {
@@ -147,7 +145,7 @@ int CALLBACK WinMain(
         CreateWindowExA(
             0,
             WindowClass.lpszClassName,
-            "Handmade Hero",
+            "CTEngines': Handmade Hero",
             WS_OVERLAPPEDWINDOW|WS_VISIBLE,
             CW_USEDEFAULT,
             CW_USEDEFAULT,
