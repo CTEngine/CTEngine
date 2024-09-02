@@ -102,7 +102,7 @@ MainWindowCallback(HWND Window,
           int Height = Paint.rcPaint.bottom - Paint.rcPaint.top;
           static DWORD Operation = BLACKNESS;
           // PatBlt(DeviceContext, X, Y, Width, Height, WHITENESS);
-          // PatBlt(DeviceContext, X, Y, Width, Height, BLACKNESS); 
+          PatBlt(DeviceContext, X, Y, Width, Height, BLACKNESS); 
           if(Operation == WHITENESS)
           {
             Operation = BLACKNESS;
