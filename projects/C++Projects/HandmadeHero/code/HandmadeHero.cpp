@@ -29,15 +29,9 @@
 #include <windows.h>
 #include <stdio.h>
 #include <iostream>
+#include <wingdi.h>
 
 /*
-
-struct foo
-{
-  int X;
-}
-typedef struct foo Foo;
-foo Foo;
 
 struct tagWNDCLASSA
 {
@@ -94,6 +88,7 @@ MainWindowCallback(HWND Window,
       case WM_CLOSE:
       {
           OutputDebugStringA("WM_CLOSE \n");
+          // DestroyWindow();
       } break;
       case WM_ACTIVATEAPP:
       {
@@ -106,11 +101,10 @@ MainWindowCallback(HWND Window,
           int X = Paint.rcPaint.left;
           int Y = Paint.rcPaint.top;
           int Width = Paint.rcPaint.right - Paint.rcPaint.left;
-          int Height = Paint.rcPaint.bottom = Paint.rcPaint.top;
-          // static DWORD Operation = WHITENESS;
-          // PatBlt(DeviceContext, X, Y, Width, Height, BLACKNESS);
-
-          /*
+          int Height = Paint.rcPaint.bottom - Paint.rcPaint.top;
+          static DWORD Operation = BLACKNESS;
+          // PatBlt(DeviceContext, X, Y, Width, Height, WHITENESS);
+          // PatBlt(DeviceContext, X, Y, Width, Height, BLACKNESS); 
           if(Operation == WHITENESS)
           {
             Operation = BLACKNESS;
@@ -120,9 +114,8 @@ MainWindowCallback(HWND Window,
             Operation = WHITENESS;
           }
           EndPaint(Window, &Paint);
-          */
       } break;
-
+      
       default:
       {
           // OutputDebugStringA("WM_DEFAULT \n");
@@ -142,50 +135,56 @@ int CALLBACK WinMain(
   WNDCLASS WindowClass = {};
 
   // TODO (ARM&): Check if HREDRAW/VREDRAW/OWNDC still matter?
-  WindowClass.style = CS_OWNDC | CS_HREDRAW | CS_VREDRAW; // FLAGS Needed to Draw/Control Window.
+  // WindowClass.style = CS_OWNDC | CS_HREDRAW | CS_VREDRAW; // FLAGS Needed to Draw/Control Window.
   WindowClass.lpfnWndProc = MainWindowCallback;           // Handles Windows Procedures.
   WindowClass.hInstance = Instance;
   WindowClass.lpszClassName = "HandmadeHeroWindowClass";
   // WindowClass.hIcon;
 
-  if (RegisterClass(&WindowClass))
+  if(RegisterClassA(&WindowClass))
   {
     HWND WindowHandle =
-        CreateWindowEx(
+        CreateWindowExA(
             0,
-            // DWORD dwExStyle,
             WindowClass.lpszClassName,
-            // LPCTSTR lpClassName,
             "Handmade Hero",
+            WS_OVERLAPPEDWINDOW|WS_VISIBLE,
+            CW_USEDEFAULT,
+            CW_USEDEFAULT,
+            CW_USEDEFAULT,
+            CW_USEDEFAULT,
+            0,
+            0,
+            Instance,
+            0);
+
+            /* These noted below, are what the above is replaced/represents by different variables below is the order used.
+
+            // DWORD dwExStyle,
+            // LPCTSTR lpClassName,
             // LPCTSTR lpWindowName,
-            WS_OVERLAPPEDWINDOW | WS_VISIBLE,
             // DWORD dwStyle,
-            CW_USEDEFAULT,
-            CW_USEDEFAULT,
-            CW_USEDEFAULT,
-            CW_USEDEFAULT,
             // int x,
             // int y,
             // int nWidth,
             // int nheight,
-            0,
             // HWND hWndParent,
-            0,
             // HMENU hMenu,
-            Instance,
             // HINSTANCE hInstance,
-            0);
-    // LPVOID lpParam);
-    if (WindowHandle) // THIS CAN BE OMITTED. (!= NULL)
+            // LPVOID lpParam);
+
+            */
+
+    if(WindowHandle) // THIS CAN BE OMITTED. (!= NULL)
     {
-      for (;;)
+      for(;;)
       {
         MSG Message;
-        BOOL MessageResult = GetMessage(&Message, 0, 0, 0);
-        if (MessageResult > 0)
+        BOOL MessageResult = GetMessageA(&Message, 0, 0, 0);
+        if(MessageResult > 0)
         {
-          TranslateMessage(&Message); // OMIT FOR LATER USE.
-          DispatchMessage(&Message);
+          // TranslateMessageA(&Message); // OMIT FOR LATER USE.
+          DispatchMessageA(&Message);
         }
         else
         {
@@ -204,9 +203,5 @@ int CALLBACK WinMain(
   }
 
   // NEW COMPLETE (ARM&)
-
-  // This is creation of the main window.
-  // std::cout << "CTEngines: Handmade Hero " << std::endl;
-  // MessageBoxA(0, "Handmade Hero ", "CTEngines: Handmade Hero ", MB_OK|MB_ICONINFORMATION );
   return 0;
 }
