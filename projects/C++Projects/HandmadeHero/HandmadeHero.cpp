@@ -28,23 +28,22 @@
 
 
 // 30 mins in work with .bat files.
+// almond milk power up.
 
 #include <windows.h>
 #include <stdio.h>
-// #include <winbase.h>
 #include <iostream>
 
 // Function definition
 
 int CALLBACK WinMain(
-	_In_ HINSTANCE hInstance,
-	_In_opt_ HINSTANCE hPrevInstance,
-	// LPSTR p_cmd_line,
-	// int p_show_cmd)
-	_In_ LPSTR lpCmdLine,
-	_In_ int nCmdShow)
+	HINSTANCE hInstance,
+	HINSTANCE hPrevInstance,
+	LPSTR lpCmdLine,
+	int nCmdShow)
 {
-    std::cout << "CTEngines: Handmade Hero" << std::endl;
-    MessageBox(0, "Handmade Hero", "CTEngines: Handmade Hero", MB_OK|MB_ICONINFORMATION);
+    // This is creation of the main window.
+    std::cout << "CTEngines: Handmade Hero " << std::endl;
+    MessageBoxA(0, "Handmade Hero ", "CTEngines: Handmade Hero ", MB_OK|MB_ICONINFORMATION );
     return 0;
 }
